@@ -1,0 +1,52 @@
+# Screenshot + blur
+screenshots
+effect-blur=9x5
+effect-vignette=0.5:0.5
+fade-in=0.25
+grace=1
+
+# Clock
+clock
+timestr=%H:%M
+datestr=%a, %b %d
+font=Iosevka Nerd Font
+font-size=120
+
+# Base color
+color=141415
+
+# Ring / indicator
+indicator
+indicator-radius=160
+indicator-thickness=8
+ring-color=252530
+ring-ver-color=7fa563
+ring-wrong-color=d8647e
+ring-clear-color=f3be7c
+
+inside-color=141415aa
+inside-ver-color=141415aa
+inside-wrong-color=141415aa
+inside-clear-color=141415aa
+
+text-color=cdcdcd
+text-ver-color=7fa563
+text-wrong-color=d8647e
+text-clear-color=f3be7c
+text-caps-lock-color=f3be7c
+
+line-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+line-clear-color=00000000
+separator-color=00000000
+
+key-hl-color=787bab
+bs-hl-color=d8647e
+
+layout-bg-color=1c1c24
+layout-text-color=c3c3d5
+
+indicator-idle-visible
+ignore-empty-password
+disable-caps-lock-text

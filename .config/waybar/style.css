@@ -6,8 +6,9 @@
 }
 
 window#waybar {
-    background-color: #1a1b26;
-    color: #c0caf5;
+    background-color: #141415;
+    color: #cdcdcd;
+    /* border-bottom: 1px solid #787bab; */
 }
 
 #backlight,
@@ -20,17 +21,17 @@ window#waybar {
 #pulseaudio,
 #tray,
 #workspaces {
-    background-color: #1a1b26;
-    color: #c0caf5;
+    background-color: #141415;
+    color: #cdcdcd;
 }
 
 .modules-left {
-    background-color: #1a1b26;
+    background-color: #141415;
     padding: 0;
 }
 
 .modules-right {
-    background-color: #1a1b26;
+    background-color: #141415;
     padding: 0 5px 0 0;
 }
 
@@ -42,18 +43,19 @@ window#waybar {
     padding: 0 8px;
     min-width: 1px;
     border-radius: 0;
-    color: #c0caf5;
-    background-color: #1a1b26;
+    color: #cdcdcd;
+    background-color: #141415;
 }
 
 #workspaces button.empty {
-    color: #565f89;
+    color: #606079;
 }
 
 #workspaces button.focused,
 #workspaces button.active {
-    background-color: #9ece6a;
-    color: #1a1b26;
+    background-color: #252530;
+    color: #787bab;
+    border-bottom: 2px solid #787bab;
 }
 
 #language {
@@ -62,8 +64,8 @@ window#waybar {
 }
 
 #mode {
-    background-color: #f7768e;
-    color: #1a1b26;
+    background-color: #787bab;
+    color: #141415;
     padding: 0 4px;
     font-weight: bold;
 }
@@ -73,7 +75,7 @@ window#waybar {
 }
 
 #cpu:hover {
-    color: #e0af68;
+    color: #8ba9c1;
 }
 
 #backlight {
@@ -81,7 +83,7 @@ window#waybar {
 }
 
 #backlight:hover {
-    color: #e0af68;
+    color: #8ba9c1;
 }
 
 #pulseaudio {
@@ -89,11 +91,11 @@ window#waybar {
 }
 
 #pulseaudio.muted {
-    color: #f7768e;
+    color: #d8647e;
 }
 
 #pulseaudio:hover {
-    color: #73daca;
+    color: #aeaed1;
 }
 
 #battery {
@@ -101,19 +103,19 @@ window#waybar {
 }
 
 #battery.charging {
-    color: #9ece6a;
+    color: #7fa563;
 }
 
 #battery.plugged {
-    color: #73daca;
+    color: #7fa563;
 }
 
 #battery.warning {
-    color: #e0af68;
+    color: #f3be7c;
 }
 
 #battery.critical {
-    color: #f7768e;
+    color: #d8647e;
 }
 
 #clock {
@@ -121,11 +123,11 @@ window#waybar {
 }
 
 #clock:hover {
-    color: #e0af68;
+    color: #8ba9c1;
 }
 
 #custom-separator {
-    color: #565f89;
+    color: #606079;
     font-size: 12px;
     margin: 0 5px;
 }

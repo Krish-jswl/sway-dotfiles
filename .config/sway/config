@@ -17,7 +17,7 @@ set $right l
 # Applications
 set $term foot
 set $menu rofi -show drun
-set $file nautilus
+set $file thunar
 set $browser librewolf
 
 ### Startups
@@ -31,7 +31,7 @@ exec syncthing
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/krishj/Pictures/Wallpapers/supermarket_and_snow.png fill
+output * bg /home/krishj/Pictures/Wallpapers/fedora-local-host.png fill
 output eDP-1 resolution 1920x1200 position 1920,0 scale 1.5
 #
 # Example configuration:
@@ -44,15 +44,10 @@ output eDP-1 resolution 1920x1200 position 1920,0 scale 1.5
 # Example configuration:
 #
 
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-
 exec swayidle -w \
-         timeout 300 'hyprlock' \
+         timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'hyprlock'
+         before-sleep 'swaylock -f -c 000000'
 
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -83,11 +78,10 @@ default_border pixel 2
 default_floating_border pixel 2
 smart_borders off
 
-# Colors: border | background | text | indicator | child_border
-client.focused          #9ece6a #1a1b26 #c0caf5 #9ece6a #9ece6a
-client.focused_inactive #414868 #1a1b26 #c0caf5 #414868 #414868
-client.unfocused        #292e42 #1a1b26 #565f89 #292e42 #292e42
-client.urgent            #f7768e #1a1b26 #ffffff #f7768e #f7768e
+client.focused          #787bab #141415 #cdcdcd #787bab #787bab
+client.focused_inactive #405065 #141415 #c3c3d5 #405065 #405065
+client.unfocused        #252530 #141415 #606079 #252530 #252530
+client.urgent            #d8647e #141415 #ffffff #d8647e #d8647e
 
 # Gaps
 gaps inner 0
@@ -115,7 +109,8 @@ smart_gaps off
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Escape exec ~/.local/bin/powermenu
+
 #
 # Moving around:
 #
@@ -179,8 +174,8 @@ smart_gaps off
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    # bindsym $mod+s layout stacking
+    # bindsym $mod+w layout tabbed
     bindsym $mod+z layout toggle split
 
 
@@ -235,16 +230,19 @@ bindsym $mod+r mode "resize"
 # Utilities:
 #
     # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.5
+    bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim
 
+    # Region screenshot: save + clipboard
+    bindsym Print exec grim -g "$(slurp)" "$HOME/Pictures/Screenshots/Screenshot from $(date +'%Y-%m-%d %H-%M-%S').png" && notify-send "Screenshot saved"
+
+    # Full screenshot: save + clipboard
+    bindsym Ctrl+Print exec grim "$HOME/Pictures/Screenshots/Screenshot from $(date +'%Y-%m-%d %H-%M-%S').png" && notify-send "Screenshot saved"
 #
 # Status Bar:
 #

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+ROFI="rofi -dmenu -i -theme ~/.config/rofi/powermenu.rasi"
+
+choice=$(printf '%s\n' \
+    'Lock' \
+    'Sleep' \
+    'Restart' \
+    'Shutdown' \
+    'Logout' |
+    $ROFI -p 'Power')
+
+case "$choice" in
+    Lock)
+        swaylock
+        ;;
+    Sleep)
+        systemctl suspend
+        ;;
+    Restart)
+        confirm=$(printf '%s\n' 'Cancel' 'Restart' |
+            $ROFI -p 'Restart?')
+        [ "$confirm" = "Restart" ] && systemctl reboot
+        ;;
+    Shutdown)
+        confirm=$(printf '%s\n' 'Cancel' 'Shutdown' |
+            $ROFI -p 'Shutdown?')
+        [ "$confirm" = "Shutdown" ] && systemctl poweroff
+        ;;
+    Logout)
+        confirm=$(printf '%s\n' 'Cancel' 'Logout' |
+            $ROFI -p 'Logout?')
+        [ "$confirm" = "Logout" ] && swaymsg exit
+        ;;
+esac

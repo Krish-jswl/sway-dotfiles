@@ -11,4 +11,4 @@ configuration {
     sidebar-mode:                false;
 }
 
-@theme "~/.config/rofi/themes/tokyo-night.rasi"
+@theme "~/.config/rofi/themes/vague.rasi"
